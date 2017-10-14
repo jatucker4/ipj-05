@@ -1,0 +1,53 @@
+import org.junit.Test
+
+class IntegersTest extends groovy.util.GroovyTestCase {
+    @Test
+    void testIsPrime() {
+        boolean result = Integers.isPrime(17)
+        assertEquals(true, result)
+        boolean bourbon = Integers.isPrime(12)
+        assertEquals(false, bourbon)
+    }
+
+    void testIsPrime1() {
+        boolean result = Integers.isPrime(17)
+        assertEquals(true, result)
+        boolean vodka = Integers.isPrime(10)
+        assertEquals(false, vodka)
+    }
+    void testrelativelyPrime(){
+        boolean result = Integers.relativelyPrime(14,15)
+        assertEquals(true,result)
+    }
+    void testFactors() {
+        ArrayList<Integer> result = new ArrayList<>()
+        result.add(1)
+        result.add(2)
+        result.add(5)
+        result.add(10)
+        assertEquals([1,2,5,10],result)
+    }
+
+    void testFactors1() {
+        ArrayList<Long> result = new ArrayList<>()
+        result.add(1)
+        result.add(2)
+        result.add(5)
+        result.add(10)
+        assertEquals([1,2,5,10],result)
+    }
+
+    void testTotient() {
+        int result = Integers.totient(100)
+        assertEquals(40,result)
+        int resultTwo = Integers.totient(20)
+        assertEquals(8,resultTwo)
+    }
+
+    void testTotient1() {
+        long result = Integers.totient(81)
+        assertEquals(54, result)
+        long back = Integers.totient(90)
+        assertEquals(24,back)
+    }
+}
