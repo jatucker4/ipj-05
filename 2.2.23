@@ -1,0 +1,117 @@
+import java.util.ArrayList;
+import java.util.Collections;
+public class Integers {
+
+   public static boolean isPrime(int n) {
+        if (n%2==0) return false;
+        for(int i=3;i*i<=n;i+=2) {
+            if(n%i==0)
+                return false;
+        }
+        return true;
+    }
+
+    public static boolean isPrime(long n) {
+        if (n%2==0) return false;
+        for(int i=3;i*i<=n;i+=2) {
+            if(n%i==0)
+                return false;
+        }
+        return true;
+    }
+
+    private static boolean relativelyPrime(int a, int b) {
+       return GCD(a,b) == 1;
+    }
+
+    private static boolean relativelyPrime(long a, long b) {
+        return GCD(a,b) == 1;
+    }
+
+    public static ArrayList<Integer> Factors(int a) {
+
+        int upperLimit = (int) (Math.sqrt(a));
+        ArrayList<Integer> factors = new ArrayList<>();
+        for (int i = 1; i <= upperLimit; i += 1) {
+            if (a % i == 0) {
+                factors.add(i);
+                if (i != a / i) {
+                    factors.add(a / i);
+                }
+            }
+        }
+        Collections.sort(factors);
+        return factors;
+    }
+
+    public static ArrayList<Long> Factors(long a) {
+
+        int upperLimit = (int) (Math.sqrt(a));
+        ArrayList<Long> factors = new ArrayList<Long>();
+        for (long i = 1; i <= upperLimit; i += 1) {
+            if (a % i == 0) {
+                factors.add(i);
+                if (i != a / i) {
+                    factors.add(a / i);
+                }
+            }
+        }
+        Collections.sort(factors);
+        return factors;
+    }
+
+    private static int GCD(int a, int b)
+    {
+        while (b > 0)
+        {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    private static long GCD(long a, long b)
+    {
+        while (b > 0)
+        {
+            long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    private static int LCM(int a, int b)
+    {
+        return a * (b / GCD(a, b));
+    }
+
+    private static long LCM(long a, long b)
+    {
+        return a * (b / GCD(a, b));
+    }
+
+    public static int totient(int num){
+        int count=0;
+        for(int a=1;a<num;a++){
+            if(GCD(num,a)==1){
+                count++;
+            }
+        }
+        return(count);
+    }
+    public static long totient(long num){
+        long count=0;
+        for(long a=1;a<num;a++){
+            if(GCD(num,a)==1){
+                count++;
+            }
+        }
+        return(count);
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
